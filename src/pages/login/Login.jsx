@@ -53,14 +53,14 @@ const Login = () => {
       fontFamily: "Poppins, sans-serif",
       fontSize: "0.875rem",
       mb: "1rem",
-      width: "93%",
+      width: "92%",
     },
     field1: {
       "& .MuiInputBase-root": {
         padding: "4px",
         fontSize: "0.875rem",
         height: "35px",
-        width: "90%",
+        width: "95%",
         border: "1px solid #EBEBEB",
       },
       "& .MuiInputBase-input": {
@@ -77,7 +77,7 @@ const Login = () => {
         padding: "4px",
         fontSize: "0.875rem",
         height: "35px",
-        width: "90%",
+        width: "95%",
         border: "1px solid #EBEBEB",
       },
       "& .MuiInputBase-input": {
@@ -101,12 +101,13 @@ const Login = () => {
     detail2: {
       m: 1,
       backgroundColor: "#49C792",
-      width: "86%",
+      width: "90.5%",
       ml: 2,
       textAlign: "center",
       color: "white",
       textTransform: "none",
       fontFamily: "Poppins, sans-serif",
+      mb:1
     },
     sign: {
       backgroundColor: "#F8F8F8",
@@ -130,7 +131,7 @@ const Login = () => {
       display: "flex",
       justifyContent: "end",
       m: 1,
-      width: "87%",
+      width: "92%",
       mt: "1rem",
     },
     account2: {

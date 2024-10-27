@@ -55,7 +55,7 @@ const ForgotPassword = () => {
         padding: "4px",
         fontSize: "0.875rem",
         height: "35px",
-        width: "93%",
+        width: "95%",
         border: "1px solid #EBEBEB",
       },
       "& .MuiInputBase-input": {
@@ -77,7 +77,7 @@ const ForgotPassword = () => {
     detail2: {
       m: 1,
       backgroundColor: "#49C792",
-      width: "88%",
+      width: "90%",
       ml: 2,
       textAlign: "center",
       color: "white",

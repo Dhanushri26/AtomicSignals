@@ -52,13 +52,14 @@ const SignUp = () => {
       ml: 2,
       fontFamily: "Poppins, sans-serif",
       fontSize: "0.875rem",
+      width:'90%'
     },
     field: {
       "& .MuiInputBase-root": {
         padding: "4px",
         fontSize: "0.875rem",
         height: "35px",
-        width: "90%",
+        width: "94%",
         border: "1px solid #EBEBEB",
       },
       display: "block",
@@ -80,7 +81,7 @@ const SignUp = () => {
     detail2: {
       m: 1,
       backgroundColor: "#49C792",
-      width: "86%",
+      width: "89.5%",
       ml: 2,
       textAlign: "center",
       color: "white",
@@ -92,7 +93,7 @@ const SignUp = () => {
       backgroundColor: "#F8F8F8",
       height: "2.5rem",
       m: 2,
-      width: "85%",
+      width: "90%",
       boxShadow: "none",
       color: "#353448",
       textTransform: "none",
@@ -128,7 +129,7 @@ const SignUp = () => {
     },
     divide: {
       width: "80%",
-      ml: 4,
+      ml: 5,
       fontFamily: "Poppins, sans-serif",
       color: "#71707E",
     },
