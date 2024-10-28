@@ -1,6 +1,6 @@
 // import { Box, Grid2 } from "@mui/material"
 import Sidebar from "../../components/sidebar/Sidebar"
-import TeamTable from "../../pages/teamTable/TeamTable"
+import TeamTable from "../teamTable/TeamTable"
 
 const Team = () => {
   return (

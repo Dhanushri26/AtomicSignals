@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SignUp from '../pages/signUp/SignUp';
 import ForgotPassword from '../pages/forgotPassword/ForgotPassword';
 import Login from '../pages/login/Login';
 import ResetPassword from '../pages/resetPassword/ResetPassword';
 import Team from '../pages/team/Team';
 import Filter from '../components/filter/Filter';
+import SignUp from '../pages/signUp/signUp';
 const RouterPaths = () => {
   return (
     <Router>
