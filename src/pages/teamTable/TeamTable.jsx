@@ -27,10 +27,11 @@ import { CheckBox, CloseOutlined } from "@mui/icons-material";
 import FilterIcon from "../../assets/icons/teampageicons/FilterIcon";
 import ImportIcon from "../../assets/icons/teampageicons/ImportIcon";
 // import Performace from './assets/good-feedback.png';
-import { height, padding, styled, width } from "@mui/system";
-import { useTheme } from "@mui/material/styles";
+// import { height, padding, styled, width } from "@mui/system";
+// import { useTheme } from "@mui/material/styles";
 import StatusSwitch from "../../components/statusSwitch/StatusSwitch";
 import { useNavigate } from "react-router-dom";
+import Performance from '../../assets/Neutral 0.svg';
 
 const initialTeamMembers = [
   {
@@ -201,11 +202,11 @@ const TeamTable = () => {
   const styles = {
     teamMembers: {
       fontFamily: "Poppins",
-      fontSize: "16px",
+      fontSize: "20px",
       lineHeight: "30px",
       color: "#000000",
       ml: "2.5rem",
-      mt: 5,
+      mt: 4,
     },
     checkBox: {
       color: "#8ddcba",
@@ -219,7 +220,7 @@ const TeamTable = () => {
       fontSize: "0.8rem",
       lineHeight: "30px",
       color: "#000000",
-      ml:-1,
+      ml: -1,
     },
     search: {
       color: "grey",
@@ -229,7 +230,7 @@ const TeamTable = () => {
       ml: "1rem",
       "& .MuiOutlinedInput-root": {
         fontFamily: "Poppins",
-        fontSize: "0.7rem",
+        fontSize: "0.8rem",
       },
       height: "rem",
     },
@@ -247,7 +248,8 @@ const TeamTable = () => {
       border: "1px solid #8ddcba",
       height: "2rem",
       color: "#8ddcba",
-      fontSize: "0.7rem",
+      fontSize: "0.8rem",
+      paddingInline:'0.4rem',
     },
     addmember: {
       textTransform: "none",
@@ -256,8 +258,8 @@ const TeamTable = () => {
       height: "2rem",
       backgroundColor: "#8ddcba",
       color: "#FFFFFF",
-      fontSize: "0.7rem",
-      paddingInline: "1rem",
+      fontSize: "0.8rem",
+      paddingInline: "1,5rem",
     },
     stack: {
       mr: "2rem",
@@ -316,17 +318,16 @@ const TeamTable = () => {
         height: "10px",
         textAlign: "center",
         justifyContent: "center",
-        padding:'0.5rem -1.5rem 0.5rem 0.5rem'
+        padding: "0.5rem -1.5rem 0.5rem 0.5rem",
       },
       "& .MuiInputBase-input": {
         fontFamily: "Poppins",
         // fontSize: "0.8rem",
         // height: "10px",
         textAlign: "start",
-        fontSize:'0.8rem',
+        fontSize: "0.8rem",
         // padding:'0.5rem -1.5rem 0.5rem 0.5rem'
-        padding:'0.7rem 0.7rem'
-
+        padding: "0.7rem 0.7rem",
       },
     },
     membersbutton: {
@@ -381,7 +382,8 @@ const TeamTable = () => {
           flexGrow={1}
           sx={styles.stack}
         >
-          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{width:'20.5%'}}/>
+          <Stack sx={{display:'flex',alignItems:'center',flexGrow:1,flexDirection:'row',gap:2}}>
           <CheckBox sx={styles.checkBox} checked />
           <Typography sx={styles.reports}>Show only my reportees</Typography>
           <TextField
@@ -396,15 +398,17 @@ const TeamTable = () => {
           <IconButton sx={styles.filter} onClick={handleFilter}>
             <FilterIcon />
           </IconButton>
+          <Divider orientation="vertical" sx={{ height: "1.5rem" }} />
           <Button sx={styles.import} startIcon={<ImportIcon />}>
             Import
           </Button>
           <Button sx={styles.addmember} onClick={handleAddMemberClick}>
             Add Member
           </Button>
+          </Stack>
         </Stack>
       </Box>
-      <Box sx={{ backgroundColor: "#f0f0f", height: "80vh", mt: 5 }}>
+      <Box sx={{ backgroundColor: "#f0f0f", height: "80vh", mt: 2 }}>
         <Box
           // p={1}
           display="flex"
@@ -563,10 +567,11 @@ const TeamTable = () => {
                         justifyItems: "center",
                         marginInline: "auto",
                         paddingInline: "auto",
-                        pl: "5%",
+                        pl: "3.5%",
                       }}
                     >
-                      <SpeedIcon />
+                      {/* <SpeedIcon /> */}
+                      <img src={Performance} alt="Performance" />
                     </TableCell>
                     <TableCell
                       sx={{
