@@ -14,11 +14,15 @@ const ResetPassword = () => {
     navigate("/login");
   };
   const [showPassword, setShowPassword] = useState(false);
+  const[showPassword2,setShowPassword2] = useState(false);
   const[snackOpen,setSnackOpen]=useState(true);
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const handleTogglePasswordVisibility2 = () => {
+    setShowPassword2(!showPassword2);
+  }
   const handleSnackClose = () => {
     setSnackOpen(false);
   };
@@ -226,20 +230,21 @@ const ResetPassword = () => {
         <TextField
           sx={styles.field2}
           required
-          type={showPassword ? "text" : "password"}
+          type={showPassword2 ? "text" : "password"}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end" sx={styles.show}>
                 <IconButton
-                  onClick={handleTogglePasswordVisibility}
+                  onClick={handleTogglePasswordVisibility2}
                   edge="end"
                   aria-label="toggle password visibility"
                 >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                  {showPassword2 ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
             ),
           }}
+          // type="password"
         />
         
         <Button sx={styles.detail2} onClick={handleLogin}>Reset Password</Button>

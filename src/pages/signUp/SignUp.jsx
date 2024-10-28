@@ -11,12 +11,25 @@ import { useNavigate } from "react-router-dom";
 import Icon from "../../assets/Group 4989.svg";
 import Google from "../../assets/icons8-google.svg";
 import Outlook from "../../assets/icons8-outlook.svg";
+import { useState } from "react";
 const SignUp = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
     navigate("/login");
   };
+  const handleSignup = () => {
+    navigate("/dashboard");
+  }
+  const[email,setEmail]=useState('');
+  // const[disabled,setDisabled]=useState(false);
+  const handleMailChange =(e) =>{
+    setEmail(e.target.value);
+  }
+
+  // useEffect(() => {
+  //   setDisabled(!(email.includes("@")));
+  // }, [email]);
   const styles = {
     container: {
       height: "100vh",
@@ -52,7 +65,7 @@ const SignUp = () => {
       ml: 2,
       fontFamily: "Poppins, sans-serif",
       fontSize: "0.875rem",
-      width:'90%'
+      width: "90%",
     },
     field: {
       "& .MuiInputBase-root": {
@@ -64,19 +77,18 @@ const SignUp = () => {
       },
       display: "block",
       ml: 2,
-      '& .MuiInputBase-input': {
-          fontWeight:'500',
-          fontFamily:'Poppins, sans-serif',
-        }
-      
+      "& .MuiInputBase-input": {
+        fontWeight: "500",
+        fontFamily: "Poppins, sans-serif",
+      },
     },
     detail1: {
       m: 1,
       ml: 2.3,
       fontFamily: "Poppins, sans-serif",
-      mt:2,
-      color:'#71707E',
-      fontSize:'0.875rem'
+      mt: 2,
+      color: "#71707E",
+      fontSize: "0.875rem",
     },
     detail2: {
       m: 1,
@@ -87,7 +99,7 @@ const SignUp = () => {
       color: "white",
       textTransform: "none",
       fontFamily: "Poppins, sans-serif",
-      mt:2
+      mt: 2,
     },
     sign: {
       backgroundColor: "#F8F8F8",
@@ -149,9 +161,17 @@ const SignUp = () => {
       pl: "1rem",
       fontFamily: "Poppins, sans-serif",
     },
-    star:{
-      color:'red',
-      pl:'5px'
+    star: {
+      color: "red",
+      pl: "5px",
+    },
+    none:{
+      border:'none',
+      textTransform:'none',
+      textAlign:'start',
+      pt:0,
+      color:'black',
+
     }
   };
   return (
@@ -179,15 +199,24 @@ const SignUp = () => {
           </Box>
         </Button>
         <Divider sx={styles.divide}>or</Divider>
-        <Typography sx={styles.detail1}>Work Email<span style={styles.star}>*</span></Typography>
-        <TextField sx={styles.field} required placeholder="atomicsignals@gmail.com"/>
+        <Typography sx={styles.detail1}>
+          Work Email<span style={styles.star}>*</span>
+        </Typography>
+        <TextField
+          sx={styles.field}
+          required
+          placeholder="atomicsignals@gmail.com"
+          value={email}
+          onChange={handleMailChange}
+          // onClick={(e) => setEmail(e.target.value)}
+        />
 
-        <Button sx={styles.detail2} >
-          Sign Up
-        </Button>
+        <Button sx={styles.detail2} onClick={handleSignup}>Sign Up</Button>
         <Box sx={styles.account}>
           <Typography sx={styles.account1}>Already have an account?</Typography>
-          <Typography sx={styles.account2} onClick={handleLogin}>Log in</Typography>
+          <Typography sx={styles.account2} onClick={handleLogin}  >
+            Log in
+          </Typography>
         </Box>
       </Card>
     </Box>
