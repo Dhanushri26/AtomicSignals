@@ -19,8 +19,11 @@ import {
   Divider,
   TablePagination,
   Switch,
-
-  FormControl, InputLabel, Select, MenuItem, OutlinedInput
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  OutlinedInput,
 } from "@mui/material";
 import SpeedIcon from "@mui/icons-material/Speed";
 import SearchIcon from "@mui/icons-material/Search";
@@ -34,52 +37,7 @@ import ImportIcon from "../../assets/icons/teampageicons/ImportIcon";
 import StatusSwitch from "../../components/statusSwitch/StatusSwitch";
 import { useNavigate } from "react-router-dom";
 import Performance from "../../assets/Neutral 0.svg";
-
-const initialTeamMembers = [
-  {
-    id: 1,
-    name: "George Fernandes",
-    designation: "Visual Designer",
-    department: "Design",
-    signals: ["C", "E", "T", "D", "U"],
-    performance: 3,
-    reportsTo: "Manager Name",
-    project: "Project Alpha",
-    location: "New York",
-    startDate: "2023-01-15",
-    email: "L5c2h@example.com",
-    status: "active",
-  },
-  {
-    id: 2,
-    name: "George Fernandes",
-    designation: "Visual Designer",
-    department: "Design",
-    signals: ["C", "E", "T", "D", "U"],
-    performance: 3,
-    reportsTo: "Manager Name",
-    project: "Project Alpha",
-    location: "New York",
-    startDate: "2023-01-15",
-    email: "L5c2h@example.com",
-    status: "active",
-  },
-  {
-    id: 3,
-    name: "George Fernandes",
-    designation: "Visual Designer",
-    department: "Design",
-    signals: ["C", "E", "T", "D", "U"],
-    performance: 3,
-    reportsTo: "Manager Name",
-    project: "Project Alpha",
-    location: "New York",
-    startDate: "2023-01-15",
-    email: "L5c2h@example.com",
-    status: "active",
-  },
-];
-
+import initialTeamMembers from './TeamTable.json';
 const Signals = ({ signals }) => (
   <Stack direction="row" spacing={1}>
     {signals.map((signal, index) => (
@@ -121,8 +79,9 @@ const TeamTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const handleSelectChange = (event) => {
     handleInputChange({
-      target: { name: 'reportsTo', value: event.target.value },
-    })}
+      target: { name: "reportsTo", value: event.target.value },
+    });
+  };
   const navigate = useNavigate();
   const handleFilter = () => {
     navigate("/filter");
@@ -786,37 +745,48 @@ const TeamTable = () => {
             Reports To
             {!isEditing && <span style={{ color: "red" }}>*</span>}
           </Typography>
-          <FormControl fullWidth margin="dense"
-        
-          sx={{
-            '& .MuiOutlinedInput-root': {
-        height: '2.5rem',
-        fontSize: '0.8rem',
-        borderRadius: '5px',
-        border: '1px solid #f2f2f2',
-        width:'21rem',
-        fontFamily:'Poppins',
-        paddingRight:'2rem'
-      },
-      '& .MuiInputLabel-root' :{
-        fontSize: '0.8rem',
-        fontFamily:'Poppins',
-        fontWeight:'bold',
-        paddingRight:'2rem'
-      }
-          }}>
-      <Select
-        value={formData.reportsTo || "Reports to"}
-        sx={{fontFamily:'Poppins'}}
-        onChange={handleSelectChange}
-        placeholder="Reports To"
-      >  <MenuItem value="Reports to" disabled sx={{color:'lightgrey'}}>Reports to</MenuItem>
-        <MenuItem value="Manager Name" sx={{fontFamily:'Poppins'}}>Manager Name</MenuItem>
-        <MenuItem value="George" sx={{fontFamily:'Poppins'}}>George</MenuItem>
-        <MenuItem value="Steven"sx={{fontFamily:'Poppins'}}>Steven</MenuItem>
-        
-      </Select>
-    </FormControl>
+          <FormControl
+            fullWidth
+            margin="dense"
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                height: "2.5rem",
+                fontSize: "0.8rem",
+                borderRadius: "5px",
+                border: "1px solid #f2f2f2",
+                width: "21rem",
+                fontFamily: "Poppins",
+                paddingRight: "2rem",
+              },
+              "& .MuiInputLabel-root": {
+                fontSize: "0.8rem",
+                fontFamily: "Poppins",
+                fontWeight: "bold",
+                paddingRight: "2rem",
+              },
+            }}
+          >
+            <Select
+              value={formData.reportsTo || "Reports to"}
+              sx={{ fontFamily: "Poppins" }}
+              onChange={handleSelectChange}
+              placeholder="Reports To"
+            >
+              {" "}
+              <MenuItem value="Reports to" disabled sx={{ color: "lightgrey" }}>
+                Reports to
+              </MenuItem>
+              <MenuItem value="Manager Name" sx={{ fontFamily: "Poppins" }}>
+                Manager Name
+              </MenuItem>
+              <MenuItem value="George" sx={{ fontFamily: "Poppins" }}>
+                George
+              </MenuItem>
+              <MenuItem value="Steven" sx={{ fontFamily: "Poppins" }}>
+                Steven
+              </MenuItem>
+            </Select>
+          </FormControl>
           <Typography sx={styles.fieldtext}>
             Email
             {!isEditing && <span style={{ color: "red" }}>*</span>}

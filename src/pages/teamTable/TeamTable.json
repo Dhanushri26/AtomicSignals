@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "George Fernandes",
+    "designation": "Visual Designer",
+    "department": "Design",
+    "signals": ["C", "E", "T", "D", "U"],
+    "performance": 3,
+    "reportsTo": "Manager Name",
+    "project": "Project Alpha",
+    "location": "New York",
+    "startDate": "2023-01-15",
+    "email": "L5c2h@example.com",
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "name": "George Fernandes",
+    "designation": "Visual Designer",
+    "department": "Design",
+    "signals": ["C", "E", "T", "D", "U"],
+    "performance": 3,
+    "reportsTo": "Manager Name",
+    "project": "Project Alpha",
+    "location": "New York",
+    "startDate": "2023-01-15",
+    "email": "L5c2h@example.com",
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "name": "George Fernandes",
+    "designation": "Visual Designer",
+    "department": "Design",
+    "signals": ["C", "E", "T", "D", "U"],
+    "performance": 3,
+    "reportsTo": "Manager Name",
+    "project": "Project Alpha",
+    "location": "New York",
+    "startDate": "2023-01-15",
+    "email": "L5c2h@example.com",
+    "status": "active"
+  }
+]
