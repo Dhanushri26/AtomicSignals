@@ -157,9 +157,9 @@ const ResetPassword = () => {
     },
     snack: {
       top:'-60%',
-      left:'-10%',
+      left:'10%',
       right:'10%',
-      ml:'-1rem',
+      ml:'0rem',
       width: "100%",
       justifyContent: "center",
       textAlign: "center",

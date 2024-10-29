@@ -6,7 +6,12 @@ import CommentsIcon from "../../assets/icons/teampageicons/CommentsIcon";
 import SettingsIcon from "../../assets/icons/teampageicons/SettingsIcon";
 import LogoutIcon from "../../assets/icons/teampageicons/Logout";
 import NotifyIcon from "../../assets/icons/teampageicons/Notify";
+import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const handleLogout =() =>{
+    navigate('/');
+  }
   const styles = {
     sidebar: {
       width: "5%",
@@ -65,7 +70,7 @@ const Sidebar = () => {
       },
     },
     bottom: {
-      pb: "5vh",
+      pb: "1vh",
     },
   };
   return (
@@ -97,7 +102,7 @@ const Sidebar = () => {
         <IconButton sx={styles.team}>
           <NotifyIcon />
         </IconButton>
-        <IconButton sx={styles.team}>
+        <IconButton sx={styles.team} onClick={handleLogout}>
           <LogoutIcon />
         </IconButton>
       </Box>

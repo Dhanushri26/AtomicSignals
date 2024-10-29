@@ -11,6 +11,9 @@ const Login = () => {
   const handleForgotPassword = () => {
     navigate("/forgotPassword");
   };
+  const handleLogin =() =>{
+    navigate("/dashboard");
+  }
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
@@ -188,7 +191,7 @@ const Login = () => {
             Forgot Password?
           </Typography>
         </Box>
-        <Button sx={styles.detail2}>Log in</Button>
+        <Button sx={styles.detail2} onClick={handleLogin}>Log in</Button>
       </Card>
     </Box>
   );

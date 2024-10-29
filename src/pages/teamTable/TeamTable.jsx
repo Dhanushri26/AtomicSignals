@@ -85,7 +85,7 @@ const Signals = ({ signals }) => (
         key={index}
         width={24}
         height={24}
-        bgcolor={signal === "C" ? "green" : signal === "E" ? "yellow" : "red"}
+        bgcolor={signal === "C" ? "green" : signal === "E" ? "yellow" : signal === "T" ? "orange" : signal === "D" ? "red" : "green"}
         borderRadius="50%"
         color="black"
         justifyContent="center"
@@ -361,7 +361,37 @@ const TeamTable = () => {
       // display:'none'
       mt: 1,
     },
+    celltext:{
+      whiteSpace: "nowrap",
+      textOverflow: "ellipsis",
+      overflow: "hidden",
+      fontFamily: "Poppins",
+    },
+    tablepages:{
+       '& .MuiTablePagination-displayedRows':{
+        fontFamily: "Poppins",
+
+       },
+       '& .MuiTablePagination-selectLabel':{
+        fontFamily: "Poppins",
+       },
+       '& .MuiTablePagination-select':{
+        fontFamily: "Poppins",
+       },
+        fontFamily: "Poppins",
+        mr: 5,
+        backgroundColor: "white",
+        width: "93.65%",
+        ml: "3%",
+        borderTopLeftRadius: "0px",
+        borderTopRightRadius: "0px",
+        borderBottomLeftRadius: "10px",
+        borderBottomRightRadius: "10px",
+        borderTop: "1px solid lightgrey",
+      
+    }
   };
+  
   return (
     <Box
       sx={{
@@ -453,12 +483,7 @@ const TeamTable = () => {
                   ].map((header) => (
                     <TableCell
                       key={header}
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       {header}
                     </TableCell>
@@ -469,12 +494,7 @@ const TeamTable = () => {
                 {teamMembers.map((member) => (
                   <TableRow key={member.id}>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       <Stack direction="row" spacing={1} alignItems="center">
                         <Avatar
@@ -497,62 +517,32 @@ const TeamTable = () => {
                       </Stack>
                     </TableCell>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       {member.designation}
                     </TableCell>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       {member.department}
                     </TableCell>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       {member.project}
                     </TableCell>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       {member.location}
                     </TableCell>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       {member.startDate}
                     </TableCell>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       <Signals signals={member.signals} />
                     </TableCell>
@@ -570,7 +560,6 @@ const TeamTable = () => {
                         pl: "3.5%",
                       }}
                     >
-                      {/* <SpeedIcon /> */}
                       <img src={Performance} alt="Performance" />
                     </TableCell>
                     <TableCell
@@ -596,22 +585,12 @@ const TeamTable = () => {
                       </span>
                     </TableCell>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       {member.email}
                     </TableCell>
                     <TableCell
-                      sx={{
-                        whiteSpace: "nowrap",
-                        textOverflow: "ellipsis",
-                        overflow: "hidden",
-                        fontFamily: "Poppins",
-                      }}
+                      sx={styles.celltext}
                     >
                       <StatusSwitch
                         status={member.status === "active"}
@@ -652,7 +631,7 @@ const TeamTable = () => {
                 <TableRow>
                   <TableCell
                     align="center"
-                    sx={{ fontFamily: "Poppins", mt: "rem" }}
+                    sx={{ fontFamily: "Poppins", }}
                   >
                     Actions
                   </TableCell>
@@ -669,6 +648,7 @@ const TeamTable = () => {
                           justifyContent: "space-between",
                           alignItems: "center",
                           display: "flex",
+                          mb:'1px'
                         }}
                       >
                         <Button size="small" sx={styles.feedback}>
@@ -676,7 +656,7 @@ const TeamTable = () => {
                         </Button>
                         <IconButton>
                           <EditIcon
-                            sx={{ fontSize: "1.5rem", height: "1rem" }}
+                            sx={{ fontSize: "1.5rem", height: "1.3rem",color:'#8ddcba'}}
                             onClick={() => handleEditMemberClick(member)}
                           />
                         </IconButton>
@@ -690,21 +670,10 @@ const TeamTable = () => {
           {/* </Box> */}
         </Box>
         <TablePagination
-          sx={{
-            fontFamily: "Poppins",
-            mr: 5,
-            backgroundColor: "white",
-            width: "93.5%",
-            ml: "3%",
-            borderTopLeftRadius: "0px",
-            borderTopRightRadius: "0px",
-            borderBottomLeftRadius: "10px",
-            borderBottomRightRadius: "10px",
-            borderTop: "1px solid lightgrey",
-          }}
+          sx={styles.tablepages}
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={teamMembers.length} // Total count of rows
+          count={teamMembers.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -827,6 +796,20 @@ const TeamTable = () => {
             margin="dense"
             name="reportsTo"
             value={formData.reportsTo}
+            onChange={handleInputChange}
+            sx={styles.membersfields}
+          />
+          <Typography sx={styles.fieldtext}>
+            Email
+            {!isEditing && <span style={{ color: "red" }}>*</span>}
+          </Typography>
+          <TextField
+            placeholder="Email"
+            fullWidth
+            multiple
+            margin="dense"
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
             sx={styles.membersfields}
           />
