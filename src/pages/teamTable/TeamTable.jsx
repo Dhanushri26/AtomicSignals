@@ -19,6 +19,8 @@ import {
   Divider,
   TablePagination,
   Switch,
+
+  FormControl, InputLabel, Select, MenuItem, OutlinedInput
 } from "@mui/material";
 import SpeedIcon from "@mui/icons-material/Speed";
 import SearchIcon from "@mui/icons-material/Search";
@@ -31,7 +33,7 @@ import ImportIcon from "../../assets/icons/teampageicons/ImportIcon";
 // import { useTheme } from "@mui/material/styles";
 import StatusSwitch from "../../components/statusSwitch/StatusSwitch";
 import { useNavigate } from "react-router-dom";
-import Performance from '../../assets/Neutral 0.svg';
+import Performance from "../../assets/Neutral 0.svg";
 
 const initialTeamMembers = [
   {
@@ -85,7 +87,17 @@ const Signals = ({ signals }) => (
         key={index}
         width={24}
         height={24}
-        bgcolor={signal === "C" ? "green" : signal === "E" ? "yellow" : signal === "T" ? "orange" : signal === "D" ? "red" : "green"}
+        bgcolor={
+          signal === "C"
+            ? "green"
+            : signal === "E"
+            ? "yellow"
+            : signal === "T"
+            ? "orange"
+            : signal === "D"
+            ? "red"
+            : "green"
+        }
         borderRadius="50%"
         color="black"
         justifyContent="center"
@@ -107,7 +119,10 @@ const TeamTable = () => {
   const [selectedMemberId, setSelectedMemberId] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-
+  const handleSelectChange = (event) => {
+    handleInputChange({
+      target: { name: 'reportsTo', value: event.target.value },
+    })}
   const navigate = useNavigate();
   const handleFilter = () => {
     navigate("/filter");
@@ -249,7 +264,7 @@ const TeamTable = () => {
       height: "2rem",
       color: "#8ddcba",
       fontSize: "0.8rem",
-      paddingInline:'0.4rem',
+      paddingInline: "0.4rem",
     },
     addmember: {
       textTransform: "none",
@@ -361,37 +376,35 @@ const TeamTable = () => {
       // display:'none'
       mt: 1,
     },
-    celltext:{
+    celltext: {
       whiteSpace: "nowrap",
       textOverflow: "ellipsis",
       overflow: "hidden",
       fontFamily: "Poppins",
     },
-    tablepages:{
-       '& .MuiTablePagination-displayedRows':{
+    tablepages: {
+      "& .MuiTablePagination-displayedRows": {
         fontFamily: "Poppins",
-
-       },
-       '& .MuiTablePagination-selectLabel':{
+      },
+      "& .MuiTablePagination-selectLabel": {
         fontFamily: "Poppins",
-       },
-       '& .MuiTablePagination-select':{
+      },
+      "& .MuiTablePagination-select": {
         fontFamily: "Poppins",
-       },
-        fontFamily: "Poppins",
-        mr: 5,
-        backgroundColor: "white",
-        width: "93.65%",
-        ml: "3%",
-        borderTopLeftRadius: "0px",
-        borderTopRightRadius: "0px",
-        borderBottomLeftRadius: "10px",
-        borderBottomRightRadius: "10px",
-        borderTop: "1px solid lightgrey",
-      
-    }
+      },
+      fontFamily: "Poppins",
+      mr: 5,
+      backgroundColor: "white",
+      width: "93.65%",
+      ml: "3%",
+      borderTopLeftRadius: "0px",
+      borderTopRightRadius: "0px",
+      borderBottomLeftRadius: "10px",
+      borderBottomRightRadius: "10px",
+      borderTop: "1px solid lightgrey",
+    },
   };
-  
+
   return (
     <Box
       sx={{
@@ -412,29 +425,37 @@ const TeamTable = () => {
           flexGrow={1}
           sx={styles.stack}
         >
-          <Box sx={{width:'20.5%'}}/>
-          <Stack sx={{display:'flex',alignItems:'center',flexGrow:1,flexDirection:'row',gap:2}}>
-          <CheckBox sx={styles.checkBox} checked />
-          <Typography sx={styles.reports}>Show only my reportees</Typography>
-          <TextField
-            placeholder="Search by name, email"
-            size="small"
-            InputProps={{
-              startAdornment: <SearchIcon sx={styles.search} />,
+          <Box sx={{ width: "20.5%" }} />
+          <Stack
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              flexGrow: 1,
+              flexDirection: "row",
+              gap: 2,
             }}
-            variant="outlined"
-            sx={styles.searchField}
-          />
-          <IconButton sx={styles.filter} onClick={handleFilter}>
-            <FilterIcon />
-          </IconButton>
-          <Divider orientation="vertical" sx={{ height: "1.5rem" }} />
-          <Button sx={styles.import} startIcon={<ImportIcon />}>
-            Import
-          </Button>
-          <Button sx={styles.addmember} onClick={handleAddMemberClick}>
-            Add Member
-          </Button>
+          >
+            <CheckBox sx={styles.checkBox} checked />
+            <Typography sx={styles.reports}>Show only my reportees</Typography>
+            <TextField
+              placeholder="Search by name, email"
+              size="small"
+              InputProps={{
+                startAdornment: <SearchIcon sx={styles.search} />,
+              }}
+              variant="outlined"
+              sx={styles.searchField}
+            />
+            <IconButton sx={styles.filter} onClick={handleFilter}>
+              <FilterIcon />
+            </IconButton>
+            <Divider orientation="vertical" sx={{ height: "1.5rem" }} />
+            <Button sx={styles.import} startIcon={<ImportIcon />}>
+              Import
+            </Button>
+            <Button sx={styles.addmember} onClick={handleAddMemberClick}>
+              Add Member
+            </Button>
           </Stack>
         </Stack>
       </Box>
@@ -481,10 +502,7 @@ const TeamTable = () => {
                     "Email",
                     "Status",
                   ].map((header) => (
-                    <TableCell
-                      key={header}
-                      sx={styles.celltext}
-                    >
+                    <TableCell key={header} sx={styles.celltext}>
                       {header}
                     </TableCell>
                   ))}
@@ -493,9 +511,7 @@ const TeamTable = () => {
               <TableBody>
                 {teamMembers.map((member) => (
                   <TableRow key={member.id}>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
+                    <TableCell sx={styles.celltext}>
                       <Stack direction="row" spacing={1} alignItems="center">
                         <Avatar
                           sx={{ width: "2.5rem", height: "2.5rem" }}
@@ -516,34 +532,20 @@ const TeamTable = () => {
                         </Typography>
                       </Stack>
                     </TableCell>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
+                    <TableCell sx={styles.celltext}>
                       {member.designation}
                     </TableCell>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
+                    <TableCell sx={styles.celltext}>
                       {member.department}
                     </TableCell>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
-                      {member.project}
-                    </TableCell>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
+                    <TableCell sx={styles.celltext}>{member.project}</TableCell>
+                    <TableCell sx={styles.celltext}>
                       {member.location}
                     </TableCell>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
+                    <TableCell sx={styles.celltext}>
                       {member.startDate}
                     </TableCell>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
+                    <TableCell sx={styles.celltext}>
                       <Signals signals={member.signals} />
                     </TableCell>
                     <TableCell
@@ -584,14 +586,8 @@ const TeamTable = () => {
                         {member.reportsTo}
                       </span>
                     </TableCell>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
-                      {member.email}
-                    </TableCell>
-                    <TableCell
-                      sx={styles.celltext}
-                    >
+                    <TableCell sx={styles.celltext}>{member.email}</TableCell>
+                    <TableCell sx={styles.celltext}>
                       <StatusSwitch
                         status={member.status === "active"}
                         onToggle={(newStatus) =>
@@ -629,10 +625,7 @@ const TeamTable = () => {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell
-                    align="center"
-                    sx={{ fontFamily: "Poppins", }}
-                  >
+                  <TableCell align="center" sx={{ fontFamily: "Poppins" }}>
                     Actions
                   </TableCell>
                 </TableRow>
@@ -648,7 +641,7 @@ const TeamTable = () => {
                           justifyContent: "space-between",
                           alignItems: "center",
                           display: "flex",
-                          mb:'1px'
+                          mb: "1px",
                         }}
                       >
                         <Button size="small" sx={styles.feedback}>
@@ -656,7 +649,11 @@ const TeamTable = () => {
                         </Button>
                         <IconButton>
                           <EditIcon
-                            sx={{ fontSize: "1.5rem", height: "1.3rem",color:'#8ddcba'}}
+                            sx={{
+                              fontSize: "1.5rem",
+                              height: "1.3rem",
+                              color: "#8ddcba",
+                            }}
                             onClick={() => handleEditMemberClick(member)}
                           />
                         </IconButton>
@@ -789,16 +786,37 @@ const TeamTable = () => {
             Reports To
             {!isEditing && <span style={{ color: "red" }}>*</span>}
           </Typography>
-          <TextField
-            placeholder="Reports To"
-            fullWidth
-            multiple
-            margin="dense"
-            name="reportsTo"
-            value={formData.reportsTo}
-            onChange={handleInputChange}
-            sx={styles.membersfields}
-          />
+          <FormControl fullWidth margin="dense"
+        
+          sx={{
+            '& .MuiOutlinedInput-root': {
+        height: '2.5rem',
+        fontSize: '0.8rem',
+        borderRadius: '5px',
+        border: '1px solid #f2f2f2',
+        width:'21rem',
+        fontFamily:'Poppins',
+        paddingRight:'2rem'
+      },
+      '& .MuiInputLabel-root' :{
+        fontSize: '0.8rem',
+        fontFamily:'Poppins',
+        fontWeight:'bold',
+        paddingRight:'2rem'
+      }
+          }}>
+      <Select
+        value={formData.reportsTo || "Reports to"}
+        sx={{fontFamily:'Poppins'}}
+        onChange={handleSelectChange}
+        placeholder="Reports To"
+      >  <MenuItem value="Reports to" disabled sx={{color:'lightgrey'}}>Reports to</MenuItem>
+        <MenuItem value="Manager Name" sx={{fontFamily:'Poppins'}}>Manager Name</MenuItem>
+        <MenuItem value="George" sx={{fontFamily:'Poppins'}}>George</MenuItem>
+        <MenuItem value="Steven"sx={{fontFamily:'Poppins'}}>Steven</MenuItem>
+        
+      </Select>
+    </FormControl>
           <Typography sx={styles.fieldtext}>
             Email
             {!isEditing && <span style={{ color: "red" }}>*</span>}

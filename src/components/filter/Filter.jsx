@@ -5,7 +5,9 @@ import {
   Button,
   Divider,
   IconButton,
-  TextField,
+  Select,
+  MenuItem,
+  FormControl,
 } from "@mui/material";
 import { CloseOutlined } from "@mui/icons-material";
 import { useState } from "react";
@@ -16,6 +18,26 @@ const Filter = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(true);
   const [selectedButtons, setSelectedButtons] = useState([1]);
   const[selectedRoles,setSelectedRoles]=useState([1]);
+  const [selectedDepartment, setSelectedDepartment] = useState('');
+  const[designation,setDesignation]=useState('');
+  const handleChange = (event) => {
+    setSelectedDepartment(event.target.value);
+  };
+  const handleDesignationChange = (event) => {
+    setDesignation(event.target.value);
+  };
+  const Departments =[
+    {id:1,label:'Design'},
+    {id:2,label:'Marketing'},
+    {id:3,label:'Development'},
+  ]
+  const Designations =[
+    {id :1,label:'Visual Designer'},
+    {id:2,label:'Software Developer'},
+    {id:3,label:'Frontend Developer'},
+    {id:4,label:'Backend Developer'},
+  ]
+  
   const handleButtonClick = (id) => {
     setSelectedButtons((prevSelected) => {
       if (prevSelected.includes(id)) {
@@ -183,25 +205,38 @@ const styles={
           ))}
         </Box>
           <Typography sx={styles.text}>Department</Typography>
-          <TextField
-          sx={styles.field}
-          placeholder="Select"
-          InputProps={{
-            endAdornment: (
-              <KeyboardArrowDown/>
-            )
-          }}
-          ></TextField>
+          <FormControl fullWidth sx={styles.field}>
+        {/* <InputLabel>Select</InputLabel> */}
+        <Select
+          value={selectedDepartment}
+          onChange={handleChange}
+          displayEmpty
+          IconComponent={KeyboardArrowDown}
+          renderValue={(selected) => selected || "Select"}
+        >
+          {Departments.map((department) => (
+            <MenuItem key={department.id} value={department.label} sx={{ fontFamily:'Poppins',fontSize:'0.8rem'}}>
+              {department.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
            <Typography sx={styles.text}>Designation</Typography>
-          <TextField
-          sx={styles.field}
-          placeholder="Select"
-          InputProps={{
-            endAdornment: (
-              <KeyboardArrowDown/>
-            )
-          }}
-          ></TextField>
+           <FormControl fullWidth sx={styles.field}>
+        <Select
+          value={designation}
+          onChange={handleDesignationChange}
+          displayEmpty
+          IconComponent={KeyboardArrowDown}
+          renderValue={(selected) => selected || "Select"}
+        >
+          {Designations.map((designation) => (
+            <MenuItem key={designation.id} value={designation.label} sx={{ fontFamily:'Poppins',fontSize:'0.8rem'}}>
+              {designation.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
           <Box sx={styles.rolebox}>
           {Roles.map((role) => (
             <Button
